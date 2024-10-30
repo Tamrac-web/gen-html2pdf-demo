@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF 示例</title>
+    <style>
+        @font-face {
+            font-family: 'NotoSansCJKsc';
+            src: url('fonts/NotoSansSC-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'NotoSansCJKsc', Arial, sans-serif;
+        }
+
+        h1 {
+            color: #2e6c80;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        /* 样式化列表部分 */
+        h2 {
+            color: #2e6c80;
+            border-bottom: 2px solid #2e6c80;
+            padding-bottom: 5px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none; /* 移除默认的列表项符号 */
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+        li:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .item-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2e6c80;
+        }
+
+        .item-age {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<h1 th:text="${title}">标题</h1>
+<p th:text="${content}">内容</p>
+
+<!--渲染List数组-->
+<h2>用户列表</h2>
+<ul>
+    <li th:each="user : ${userList}">
+        <div class="item-header">
+            <div class="item-name" th:text="${user.name}">姓名</div>
+            <div class="item-age" th:text="${user.age}">年龄</div>
+        </div>
+    </li>
+</ul>
+
+</body>
+</html>
